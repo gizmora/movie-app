@@ -1,0 +1,60 @@
+<div class="container">
+    <div class="col-lg-12 main">
+    <h3>Share your favorite movie or series!</h3>
+    <form #movieForm="ngForm" (ngSubmit)="addMovie(movieForm)" >
+      <div class="form-group">
+        <label for="name">Movie / Series Name</label>
+        <input #name="ngModel" type="text" required class="form-control" name="title" ngModel>
+        <div *ngIf="name.invalid && name.touched"
+            class="alert-danger">
+            <small>Title is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="suggested_by">Your Name</label>
+          <input #suggested_by="ngModel" required type="text" class="form-control" name="suggested_by" ngModel>
+          <div *ngIf="suggested_by.invalid && (suggested_by.dirty || suggested_by.touched)"
+            class="alert-danger">
+          <small>Please enter your name</small>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="email">Email</label>
+        <input #email="ngModel" required type="text" class="form-control" name="email" ngModel email="true">
+        <!-- <div *ngIf="email.invalid && (email.dirty || email.touched)"
+          class="alert-danger">
+        <small>Please enter a valid email</small>
+      </div> -->
+    </div>
+      <div class="form-group">
+        <label for="synopsis">Synopsis</label>
+        <textarea #synopsis="ngModel" required class="form-control" name="synopsis" rows="10" ngModel></textarea>
+        <div *ngIf="synopsis.invalid && (synopsis.dirty || synopsis.touched)"
+            class="alert-danger">
+          <small>Synopsis is required</small>
+        </div>
+      </div>
+      <div class="form-group">
+          <label for="img-url">Cover Image URL</label>
+          <input #imgUrl="ngModel" required type="text" class="form-control" name="img_url" ngModel>
+          <div *ngIf="imgUrl.invalid && (imgUrl.dirty || imgUrl.touched)"
+            class="alert-danger">
+          <small>Cover URL is required</small>
+        </div>
+        <div *ngIf="imgUrl.value" class="img-preview" >
+          <img [src]="imgUrl.value">
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="trailer">Trailer</label>
+        <input #trailer="ngModel" required type="text" class="form-control" name="trailer" ngModel>
+        <div *ngIf="trailer.invalid && (trailer.dirty || trailer.touched)"
+          class="alert-danger">
+        <small>Please enter trailer URL</small>
+      </div>
+    </div>
+      <button [disabled]="!movieForm.form.valid" type ="submit" class="btn btn-primary" >Submit</button>
+      <!-- <button type ="submit" class="btn btn-primary" >Submit</button> -->
+    </form>
+    </div>
+</div>

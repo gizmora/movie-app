@@ -1,0 +1,19 @@
+
+<div class="container-fluid" style="margin-top:30px">
+    <div class="row">
+      <div class="left">
+        <h3>My List</h3>
+        <p>Movies you added to your List</p>
+        <div class="nav nav-pills flex-column" id="v-pills-tab" role="tablist">
+          <div class="nav-item" *ngFor="let movie of movieList">
+              <a class="nav-link" (mouseover)="isActive($event, movie.id)" (mouseleave)="isActive($event)" (click)="showMoviePreview(movie)" id="{{movie.id}}">{{movie.title}}</a>
+          </div>
+        </div>
+      </div>
+      <div class="right">
+          <app-movie-preview [clickedMovieData]="clickedMovie"></app-movie-preview>
+      </div>
+
+    </div>
+</div>
+

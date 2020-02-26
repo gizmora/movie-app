@@ -1,0 +1,6 @@
+<div *ngIf="showObsrvr$ | async" class="overlay" id="trailerNav">
+  <a href="javascript:void(0)" class="closebtn" (click)="closeNav()">&times;</a>
+  <div class="container">
+    <iframe class="embed-responsive-item" type="text/html" width="680" height="480" [src]="sanitizer.bypassSecurityTrustResourceUrl(movieData.trailer)" frameborder="0" allowfullscreen></iframe>
+  </div>
+</div>

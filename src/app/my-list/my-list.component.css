@@ -1,0 +1,25 @@
+.container-fluid{
+  margin: auto !important;
+  padding-top: 100px;
+  padding-left: 200px;
+}
+
+.left{
+  width: 30%;
+  padding-right: 10px;
+}
+
+.right{
+  width: 70%;
+
+}
+
+
+.nav-pills .nav-link.active {
+  color: #fff !important;
+}
+
+.nav-link {
+  color: #007bff !important;
+  cursor: pointer !important;
+}

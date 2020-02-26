@@ -1,0 +1,25 @@
+<app-search (searchEvent)="search($event)"></app-search>
+<div class="container ">
+    <li *ngFor="let movie of filteredList$ | async">
+      <div class="row">
+        <div class= "col-md-7" (click)="showMovieTrailer(movie)">
+          <img class= "img-fluid rounded mb-3 mb-md-0" src="{{movie.cover_url}}" >
+          <div class="middle">
+              <div class="text">Click to watch trailer</div>
+            </div>
+        </div>
+        <!--<div class="col-md-5" innerHTML = "{{movie.title + movie.synopsis | highlight: searchTerm}}"> -->
+        <div class="col-md-5">
+            <h3 innerHTML="{{movie.title | highlight: searchTerm}}"></h3>
+            <i> Suggested by {{movie.suggested_by}}</i>
+            <i> {{movie.users_copy.email}}</i>
+            <p  innerHTML="{{movie.synopsis | highlight: searchTerm}}">{{movie.synopsis}}</p>
+            <button id="{{movie.id}}" [class]="changeBtnClass(movie.id)" (click)="addToMyList(movie)" >
+              <span *ngIf="!isMovieAdded(movie.id)"> Add to My List </span>
+              <span *ngIf="isMovieAdded(movie.id)"> Added to MyList</span>
+            </button>
+          </div>
+      </div>
+    </li>
+    <app-trailer [movieData]="clickedMovie"></app-trailer>
+</div>
